@@ -65,7 +65,7 @@
                         <ng-template #submitBtn1>
                             <button mat-raised-button class="uci-action-button"
                                     [disabled]="!isCheckedTermCondition || !botLogics.length"
-                                    (click)="this.conversationId ? onSubmit(true) : openItemsVerifyModal(true)">
+                                    (click)="onSubmit(true)">
                                 {{conversationId ? resourceService.frmelmnts?.btn?.update : resourceService.frmelmnts?.btn?.submit}}
                             </button>
                         </ng-template>
@@ -73,10 +73,8 @@
                     <div class="pt-0">
                         <mat-checkbox name="isCheckedTermCondition" [color]="'primary'"
                                       [(ngModel)]="isCheckedTermCondition">
-                            <mat-label class="font-weight-normal t-and-c-title">
-                                <a class="tc-tag" href="https://Nipun Lakshya App Chatbot.gov.in/term-of-use.html" target="_blank">
-                                    {{resourceService.frmelmnts?.lbl?.aggreeTc}}
-                                </a>
+                            <mat-label class="font-weight-normal">
+                                {{resourceService.frmelmnts?.lbl?.aggreeTc}}
                             </mat-label>
                         </mat-checkbox>
                     </div>
