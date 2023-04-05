@@ -47,14 +47,21 @@ export class ConversationSetupComponent implements OnInit {
                 .pipe(debounceTime(1000))
                 .subscribe(
                     value => {
-                        this.onStarringMessageChange();
+                        this.onStarringMessageChange('startingMessage');
+                    }
+                );
+                this.conversationForm.get('name').valueChanges
+                .pipe(debounceTime(1000))
+                .subscribe(
+                    value => {
+                        this.onStarringMessageChange('name');
                     }
                 );
         }
     }
 
-    onStarringMessageChange() {
-        this.starringMessageChange.emit({});
+    onStarringMessageChange(value) {
+        this.starringMessageChange.emit(value);
     }
 
     onUserSegmentDelete(index) {

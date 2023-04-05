@@ -44,7 +44,7 @@ export class ConversationAddComponent implements OnInit {
   endMinDate;
   allChecked: boolean;
   isSubmit: boolean;
-  isStartingMessageExist: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  isStartingMessageExist={};
   isStartingMessageAvailable = false;
   fileErrorStatus;
   user;
@@ -358,35 +358,35 @@ export class ConversationAddComponent implements OnInit {
     });
   }
 
-  onStarringMessageChange() {
-    // this.uciService.searchConversation({startingMessage: this.conversationForm.value.startingMessage, match: true}).subscribe(val => {
-    //   console.log(val);
-    //   if (val && val.data && val.data.length) {
-    //     console.log(val.data);
-    //     this.isStartingMessageExist.next((this.conversationId !== val.data[0].id));
-    //   } else {
-    //     this.isStartingMessageExist.next(false);
-    //   }
-    // }, error => {
-    //   this.isStartingMessageExist.next(false);
-    // });
+  onStarringMessageChange(key) {
+    this.uciService.searchConversation({[key]: this.conversationForm.value[key], match: true}).subscribe(val => {
+      console.log(val);
+      if (val && val.data && val.data.length) {
+        console.log(val.data);
+        this.isStartingMessageExist[key]= (this.conversationId !== val.data[0].id);
+      } else {
+        this.isStartingMessageExist[key] = false;
+      }
+    }, error => {
+      this.isStartingMessageExist[key]=false;
+    });
   }
 
-  private validateStartingMessage(): AsyncValidatorFn {
-    return control => control.valueChanges
-      .pipe(
-        debounceTime(400),
-        distinctUntilChanged(),
-        switchMap(value => this.uciService.searchConversation({startingMessage: value, match: true})),
-        map((val) => {
-          console.log('---', val);
-          let isStartingMessageExist = false;
-          if (val && val.data && val.data.length) {
-            isStartingMessageExist = (this.conversationId !== val.data[0].id);
-          }
-          console.log('vaaaaaaa', isStartingMessageExist, isStartingMessageExist ? {alreadyExist: true} : null);
-          return isStartingMessageExist ? {alreadyExist: true} : null;
-        }));
+  // private validateStartingMessage(): AsyncValidatorFn {
+  //   return control => control.valueChanges
+  //     .pipe(
+  //       debounceTime(400),
+  //       distinctUntilChanged(),
+  //       switchMap(value => this.uciService.searchConversation({startingMessage: value, match: true})),
+  //       map((val) => {
+  //         console.log('---', val);
+  //         let isStartingMessageExist = false;
+  //         if (val && val.data && val.data.length) {
+  //           isStartingMessageExist = (this.conversationId !== val.data[0].id);
+  //         }
+  //         console.log('vaaaaaaa', isStartingMessageExist, isStartingMessageExist ? {alreadyExist: true} : null);
+  //         return isStartingMessageExist ? {alreadyExist: true} : null;
+  //       }));
     /*return (control: AbstractControl): Observable<ValidationErrors | null> => {
       // return this.isStartingMessageExist.pipe(
       //   map(val => {
@@ -412,7 +412,7 @@ export class ConversationAddComponent implements OnInit {
       //   );
       // return {alreadyExist: true};
     };*/
-  }
+  // }
 
   onBotLogicModify(logics) {
     this.botLogics = logics;

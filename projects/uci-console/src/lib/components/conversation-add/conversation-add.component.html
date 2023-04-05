@@ -20,8 +20,8 @@
                             <lib-conversation-setup
                                     [conversationForm]="conversationForm"
                                     [startMinDate]="startMinDate" [userSegments]="userSegments"
-                                    [isStartingMessageExist]="isStartingMessageExist.value"
-                                    (starringMessageChange)="onStarringMessageChange()"
+                                    [isStartingMessageExist]="isStartingMessageExist"
+                                    (starringMessageChange)="onStarringMessageChange($event)"
                                     (userSegmentDelete)="onUserSegmentDelete($event)"
                             >
                             </lib-conversation-setup>
@@ -89,8 +89,8 @@
                         <lib-conversation-setup
                                 [conversationForm]="conversationForm"
                                 [startMinDate]="startMinDate" [userSegments]="userSegments"
-                                [isStartingMessageExist]="isStartingMessageExist.value"
-                                (starringMessageChange)="onStarringMessageChange()"
+                                [isStartingMessageExist]="isStartingMessageExist"
+                                (starringMessageChange)="onStarringMessageChange($event)"
                                 (userSegmentDelete)="onUserSegmentDelete($event)"
                         >
                         </lib-conversation-setup>
