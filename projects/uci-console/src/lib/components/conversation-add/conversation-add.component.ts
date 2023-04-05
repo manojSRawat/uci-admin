@@ -76,6 +76,7 @@ export class ConversationAddComponent implements OnInit {
       startingMessage: ['', [Validators.required]],
       startDate: [null, Validators.required],
       endDate: [null],
+      isBroadcastBotEnabled: [true],
       segmentId: ['', Validators.required],
       status: ['enabled']
     });

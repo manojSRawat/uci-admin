@@ -67,4 +67,12 @@ export class ConversationSetupComponent implements OnInit {
     onUserSegmentDelete(index) {
         this.userSegmentDelete.emit(index);
     }
+
+    disableField(){
+        if(this.conversationForm.value.isBroadcastBotEnabled) {
+            this.conversationForm.controls['segmentId'].enable();
+        } else{
+            this.conversationForm.controls['segmentId'].disable();
+        }
+    }
 }
