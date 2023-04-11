@@ -24,7 +24,6 @@
     "@angular/platform-browser-dynamic": "~10.2.5",
     "@angular/router": "~10.2.5",
     "@project-sunbird/client-services": "^3.9.1",
-    "common-form-elements-v9": "4.1.0",
     "lodash-es": "^4.17.20",
     "moment": "^2.22.1",
     "ng2-semantic-ui-v9": "0.0.6",
