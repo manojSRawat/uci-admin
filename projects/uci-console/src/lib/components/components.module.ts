@@ -39,6 +39,7 @@ import {PaginatorIntl} from '../services/paginator-intl.service';
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {ExhaustReportComponent} from './exhaust-report/exhaust-report.component';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
     declarations: [
@@ -79,6 +80,7 @@ import {ExhaustReportComponent} from './exhaust-report/exhaust-report.component'
         MatTooltipModule,
         MatSelectModule,
         MatFormFieldModule,
+        MatTabsModule
     ],
     exports: [
         SidePanelComponent,
